@@ -1,0 +1,21 @@
+CREATE OR REPLACE PACKAGE customer_order_pkg AS
+
+    -- Function 1: Get total order amount for a customer
+    FUNCTION get_customer_total(
+        p_customer_id IN NUMBER,
+        p_status      IN VARCHAR2 DEFAULT 'COMPLETED'
+    ) RETURN NUMBER;
+
+    -- Function 2: Get all active orders with items for a region
+    FUNCTION get_region_orders(
+        p_region    IN VARCHAR2,
+        p_from_date IN DATE
+    ) RETURN SYS_REFCURSOR;
+
+    -- Function 3: Get order summary with customer details
+    FUNCTION get_order_summary(
+        p_order_id IN NUMBER
+    ) RETURN SYS_REFCURSOR;
+
+END customer_order_pkg;
+/
